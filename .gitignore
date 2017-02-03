@@ -1,0 +1,21 @@
+# Project files
+cms/data/*
+cms/config/
+cms/propel/build/classes/*/om
+cms/propel/build/classes/*/map
+cms/propel/build/sql/
+curry
+/vendor
+node_modules
+www/css/tmp
+
+# Junk files created by OS
+._*
+.DS_Store
+Thumbs.db
+
+# Project files
+www/cache/
+www/cron/
+*.sql
+

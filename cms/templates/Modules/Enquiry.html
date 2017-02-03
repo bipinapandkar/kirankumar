@@ -1,0 +1,45 @@
+{% block enquiryForm %}
+	{% if CaptchaError %}
+		<div class="row2 error-msg">{{ CaptchaError }}</div>
+	{% endif %}
+   	<div class="row process-content">
+   		<form id="enquiryfrm" method="post" action="">
+   			<div class="row2">
+   				<div class="left">
+   					<label for="name">Name <span id="nameError" class="error-txt" >Name Required</span></label>
+   					<input data-h5-errorid="nameError" type="text" name="name" id="name" value="" required="" class="error h5-active">
+   				</div>
+   				<div class="right">
+   					<label for="email">Email <span id="emailError" class="error-txt" >Invalid Emai</span></label>
+   					<input data-h5-errorid="emailError" type="email" name="email" id="email" value="" required="" class="error h5-email">
+   				</div>
+   			</div>
+   			<div class="row2">
+   				<div class="left">
+   					<label for="name">Telno <span id="telnoError" class="error-txt" >Telno Required</span></label>
+   					<input data-h5-errorid="telnoError" type="text" name="telno" id="telno" value="" required="" class="error h5-active">
+   				</div>
+   				<div class="right">
+   					<label for="company">Company Name</label>
+   					<input type="text" name="company" id="company" value="" >
+   				</div>
+   			</div>
+   			<div class="row2">
+   				<div class="left">
+   					<label for="address">Address </label>
+   					<textarea row="2" name="address" id="address"></textarea>
+   				</div>
+   				<div class="right">
+   					<label for="enquirytext">Enquiry</label>
+   					<textarea row="2" name="enquirytext" id="enquirytext"></textarea>
+   				</div>
+   			</div>
+   			<div class="row2" style="text-align:center;">
+   				<div class="g-recaptcha" data-sitekey="6LfuQRIUAAAAACXhrCg8udOpt2fHd3Uixcue66PV"></div>
+   			</div>
+   			<div class="row2">
+   				<input type="submit" class="custom-btn" data-frm="enquiryfrm" />
+   			</div>
+   		</form>			
+   	</div> <!-- /process-content --> 
+{% endblock %}   	

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<database package="project" name="curry">
+	<!-- Enquiries -->
+	<table name="customer">
+        <column name="customer_id" type="INTEGER" required="true" autoIncrement="true" primaryKey="true" />
+        <column name="name" type="VARCHAR" size="256" required="true" primaryString="true" />
+        <column name="address" type="LONGVARCHAR" primaryString="true" />
+        <column name="email" type="VARCHAR" size="256" required="true" />
+        <column name="telno" type="VARCHAR" size="256" required="true" />        	
+        <column name="company_name" type="LONGVARCHAR" size="256" />
+        <column name="enquiry_description" type="LONGVARCHAR" required="true" primaryString="true" />
+		<column name="is_customer" type="BOOLEAN" defaultValue="true" />
+        <behavior name="sortable" />
+        <behavior name="sluggable" />
+        <behavior name="timestampable" />
+    </table>
+    <table name="term_delivery">
+    	<column name="term_delivery_id" type="INTEGER" required="true" autoIncrement="true" primaryKey="true" />
+    	<column name="delivery" type="LONGVARCHAR" />
+    	<column name="delivery_description" type="LONGVARCHAR" />
+    	<behavior name="sortable" />
+    </table>
+    <table name="term_payment">
+    	<column name="term_paymentterm_id" type="INTEGER" required="true" autoIncrement="true" primaryKey="true" />
+    	<column name="paymentterm" type="LONGVARCHAR" />
+    	<column name="paymentterm_description" type="LONGVARCHAR" />
+    	<behavior name="sortable" />
+    </table>
+    <table name="term_fright">
+    	<column name="term_delivery_id" type="INTEGER" required="true" autoIncrement="true" primaryKey="true" />
+    	<column name="fright" type="LONGVARCHAR" />
+    	<column name="fright_description" type="LONGVARCHAR" />
+    	<behavior name="sortable" />
+    </table>
+    <table name="term_octinsurance">
+    	<column name="term_octinsurance_id" type="INTEGER" required="true" autoIncrement="true" primaryKey="true" />
+    	<column name="octinsurance" type="LONGVARCHAR" />
+    	<column name="octinsurance_description" type="LONGVARCHAR" />
+    	<behavior name="sortable" />
+    </table>
+    <table name="term_validity">
+    	<column name="term_validity_id" type="INTEGER" required="true" autoIncrement="true" primaryKey="true" />
+    	<column name="validity" type="LONGVARCHAR" />
+    	<column name="validity_description" type="LONGVARCHAR" />
+    	<behavior name="sortable" />
+    </table>    
+    <table name="term_warranty">
+    	<column name="term_warranty_id" type="INTEGER" required="true" autoIncrement="true" primaryKey="true" />
+    	<column name="warranty" type="LONGVARCHAR" />
+    	<column name="warranty_description" type="LONGVARCHAR" />
+    	<behavior name="sortable" />
+    </table>
+    <table name="pump_category">
+        <column name="pump_category_id" type="INTEGER" required="true" autoIncrement="true" primaryKey="true" />
+        <column name="title" type="VARCHAR" size="64" required="true" primaryString="true" />	
+        <behavior name="sortable" />
+        <behavior name="sluggable" />
+        <behavior name="timestampable" />
+    </table>
+    <table name="pump_model">
+        <column name="pump_model_id" type="INTEGER" required="true" autoIncrement="true" primaryKey="true" />
+        <column name="title" type="VARCHAR" required="true" primaryString="true" />
+        <column name="description" type="LONGVARCHAR" />
+        <column name="price" type="DOUBLE" required="true" />
+        <column name="pump_category_id" type="INTEGER" required="true"/>
+        <foreign-key foreignTable="pump_category">
+            <reference local="pump_category_id" foreign="pump_category_id" />
+        </foreign-key>
+        <behavior name="sortable" />
+        <behavior name="sluggable" />
+        <behavior name="timestampable" />
+    </table>
+    <table name="spare_part">
+        <column name="spare_part_id" type="INTEGER" required="true" autoIncrement="true" primaryKey="true" />
+        <column name="spare_part_number" type="VARCHAR" required="true" primaryString="true" />
+        <column name="title" type="VARCHAR" required="true" primaryString="true" />
+        <column name="price" type="DOUBLE" required="true" />
+        <behavior name="sortable" />
+        <behavior name="sluggable" />
+        <behavior name="timestampable" />
+    </table>
+    <table name="pump_spare" isCrossRef="true">
+		<column name="pump_model_id" type="INTEGER" required="true" primaryKey="true" />
+		<column name="spare_part_id" type="INTEGER" required="true" primaryKey="true" />
+		
+		<foreign-key foreignTable="pump_model">
+            <reference local="pump_model_id" foreign="pump_model_id" />
+        </foreign-key>
+        <foreign-key foreignTable="spare_part">
+            <reference local="spare_part_id" foreign="spare_part_id" />
+        </foreign-key>
+	</table>
+</database>

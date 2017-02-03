@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {% block head %}
+  <meta http-equiv="Content-Type" content="{{curry.ContentType}}; charset={{curry.Encoding}}" />
+  <meta name="keywords" content="{{curry.page.meta.inherited.Keywords}}" />
+  <meta name="description" content="{{curry.page.meta.inherited.Description}}" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>{% block title curry.page.meta.Title|default(curry.page.Name~" - "~curry.ProjectName) %}</title>
+  <base href="{{curry.BaseUrl}}">
+  <link rel="icon" type="image/gif" href="animated_favicon1.gif" >
+  <script src='https://www.google.com/recaptcha/api.js'></script>
+  {{curry.HtmlHead|raw}}
+  {% endblock %}
+</head>
+
+<body id="top">
+{% block body %}
+  {% placeholder 'content' %}
+{% endblock %}
+
+
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/jquery-migrate-1.2.1.min.js"></script>
+<script src="js/jquery.h5validate.js"></script>
+<script src="js/plugins.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
