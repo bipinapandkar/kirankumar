@@ -53,6 +53,7 @@ class Project_Module_Enquiry extends Curry_Module {
 					$mail->addTo(Curry_Core::$config->curry->adminEmail);
 		
 					$mail->setFrom('admin@techrameshwar.in', 'Kumar Engineering');
+					$mail->addTo($toEmail);
 					$body = $message;
 					$mail->setSubject($email_subject);
 					$mail->setBodyHtml($body);
